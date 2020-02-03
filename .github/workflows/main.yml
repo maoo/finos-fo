@@ -17,11 +17,11 @@ jobs:
       with:
         args: install --prefix ./website
     - name: Update version
-      uses: clay/docusaurus-github-action@master
+      uses: maoo/docusaurus-github-action@master
       with:
         args: version
     - name: Deploy Docs
-      uses: clay/docusaurus-github-action@master
+      uses: maoo/docusaurus-github-action@master
       with:
         super_secret: ${{ secrets.DEPLOY_SSH_KEY }}
         args: deploy
