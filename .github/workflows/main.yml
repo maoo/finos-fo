@@ -22,7 +22,7 @@ jobs:
     - name: Install Website deps
       run: npm install --prefix ./website
     - name: Build Website
-      run: npm run build --prefix website
+      run: npm run build --prefix ./website
     - name: Commit files
       run: |
         git config --local user.email "maurizio@finos.org"
