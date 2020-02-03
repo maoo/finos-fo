@@ -14,15 +14,28 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
     - run: npm install --prefix ./website
-    - name: Update version
-      uses: maoo/docusaurus-github-action@master
+    - run: npm run build --prefix website
+    - name: Commit files
+      run: |
+        git config --local user.email "maurizio@finos.org"
+        git config --local user.name "Maurizio Pillitu"
+        git commit -m "Docusaurus Action - pushing website changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
       with:
-        args: version
-    - name: Deploy Docs
-      uses: maoo/docusaurus-github-action@master
-      with:
-        super_secret: ${{ secrets.DEPLOY_SSH_KEY }}
-        args: deploy
-      env:
-        BUILD_DIR: "website"
-        PROJECT_NAME: "finos-fo"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh_pages
+        directory: website/build
+        force: true
+    # - name: Update version
+    #   uses: maoo/docusaurus-github-action@master
+    #   with:
+    #     args: version
+    # - name: Deploy Docs
+    #   uses: maoo/docusaurus-github-action@master
+    #   with:
+    #     super_secret: ${{ secrets.DEPLOY_SSH_KEY }}
+    #     args: deploy
+    #   env:
+    #     BUILD_DIR: "website"
+    #     PROJECT_NAME: "finos-fo"
