@@ -11,9 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout repo
     - uses: actions/checkout@v1
+    - name: Install Node
     - uses: actions/setup-node@v1
+    - name: Install Website deps
     - run: npm install --prefix ./website
+    - name: Build Website
     - run: npm run build --prefix website
     - name: Commit files
       run: |
