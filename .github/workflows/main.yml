@@ -13,6 +13,10 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v1
+    # - name: Checkout gh-pages
+    #   uses: actions/checkout@v1
+    #   ref: gh-pages
+    #   path: website/build
     - name: Install Node
       uses: actions/setup-node@v1
     - name: Install Website deps
@@ -23,12 +27,12 @@ jobs:
       run: |
         git config --local user.email "maurizio@finos.org"
         git config --local user.name "Maurizio Pillitu"
-# git commit -m "Docusaurus Action - pushing website changes" -a
+    # git commit -m "Docusaurus Action - pushing website changes" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh_pages
+        branch: gh-pages
         directory: website/build
         force: true
     # - name: Update version
