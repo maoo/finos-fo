@@ -23,7 +23,7 @@ jobs:
       run: |
         git config --local user.email "maurizio@finos.org"
         git config --local user.name "Maurizio Pillitu"
-        git commit -m "Docusaurus Action - pushing website changes" -a
+# git commit -m "Docusaurus Action - pushing website changes" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
