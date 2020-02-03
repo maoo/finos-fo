@@ -23,8 +23,8 @@ jobs:
     - name: Deploy Docs
       uses: clay/docusaurus-github-action@master
       with:
+        super_secret: ${{ secrets.DEPLOY_SSH_KEY }}
         args: deploy
       env:
-        DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
         BUILD_DIR: "website",
         PROJECT_NAME: "finos-fo"
