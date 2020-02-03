@@ -26,5 +26,5 @@ jobs:
         super_secret: ${{ secrets.DEPLOY_SSH_KEY }}
         args: deploy
       env:
-        BUILD_DIR: "website",
+        BUILD_DIR: "website"
         PROJECT_NAME: "finos-fo"
