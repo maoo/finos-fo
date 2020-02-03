@@ -1,6 +1,9 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+    - 'master'
 
 jobs:
   build:
@@ -8,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Filter Master
-      uses: actions/bin/filter@master
-      with:
-        args: branch master
     - name: Install
       uses: actions/npm@master
       with:
